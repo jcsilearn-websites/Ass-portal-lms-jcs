@@ -1,37 +1,17 @@
 {
   "compilerOptions": {
-    // Node 22 (see `node --version` in dev / no `engines` field pinning this
-    // in package.json) supports ES2022 fully; ES2023 lib adds Array
-    // findLast/toSorted etc. that V8 in Node 22 also supports.
     "target": "ES2022",
     "lib": ["ES2023"],
-
-    // No "type": "module" in package.json and every relative import across
-    // src/ is extensionless (e.g. `from './organization.schema'`, not
-    // `'./organization.schema.js'`) — that's classic CommonJS resolution,
-    // which is also what tsx actually runs this project as. NodeNext/Node16
-    // would require explicit extensions on relative imports and reject this
-    // codebase outright, so they'd fight the code as it's actually written.
     "module": "CommonJS",
     "moduleResolution": "Node10",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-
     "strict": true,
     "skipLibCheck": true,
-
-    // "node" is the deprecated legacy spelling of this same resolution
-    // mode (renamed to "Node10" — confirmed against installed TypeScript
-    // 5.9.3's own typescript.d.ts); this just silences the IDE's
-    // deprecation notice for that already-current name without changing
-    // resolution behavior at all. Not a signal to migrate to "bundler" —
-    // that's a separate, unverified behavior change, deliberately not
-    // made here. Value is "5.0", not the "6.0" the deprecation message
-    // text suggests — installed TypeScript 5.9.3's compiler
-    // (getIgnoreDeprecationsVersion in typescript.js) hardcodes "5.0" as
-    // the only value it accepts; "6.0" fails with TS5103 (confirmed by
-    // trying it first).
     "ignoreDeprecations": "5.0"
   },
-  "include": ["src/**/*.ts", "drizzle.config.ts"]
+  "include": [
+    "src/**/*.ts",
+    "drizzle.config.ts"
+  ]
 }

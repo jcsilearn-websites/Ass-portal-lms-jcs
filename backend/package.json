@@ -3,7 +3,8 @@
   "//": "dependencies and scripts will be added in a later phase",
   "scripts": {
     "dev": "tsx watch --env-file=.env src/server.ts",
-    "start": "tsx src/server.ts",
+    "build": "tsc --outDir dist --rootDir .",
+    "start": "node dist/src/server.js",
     "db:generate": "node --env-file=.env node_modules/drizzle-kit/bin.cjs generate",
     "db:migrate": "node --env-file=.env node_modules/drizzle-kit/bin.cjs migrate",
     "db:studio": "node --env-file=.env node_modules/drizzle-kit/bin.cjs studio",
