@@ -22,7 +22,7 @@ async function checkDatabase(): Promise<ReadinessCheck> {
 async function checkRedis(): Promise<ReadinessCheck> {
   return { name: 'redis', healthy: await pingRedis() };
 }
-
+// tharun
 // checkJudge0Reachable() (integrations/judge0/client.ts) is a lightweight
 // one-shot check: no retry, no circuit breaker involvement, 2s timeout. A
 // readiness probe needs to be fast and cheap, not resilient.
