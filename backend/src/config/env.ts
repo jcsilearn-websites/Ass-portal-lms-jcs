@@ -20,12 +20,13 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().min(1, 'CORS_ORIGIN is required'),
 
   DATABASE_URL: z
-    .string()
-    .url('DATABASE_URL must be a valid connection string')
-    .refine(
-      (value) => value.startsWith('postgres://') || value.startsWith('postgresql://'),
-      'DATABASE_URL must start with postgres:// or postgresql://',
-    ),
+  .string()
+  .refine(
+    (value) =>
+      value.startsWith('postgres://') ||
+      value.startsWith('postgresql://'),
+    'DATABASE_URL must start with postgres:// or postgresql://',
+  ),
 
   SUPABASE_URL: z.string().url('SUPABASE_URL must be a valid URL'),
   SUPABASE_ANON_KEY: z.string().min(1, 'SUPABASE_ANON_KEY is required'),
