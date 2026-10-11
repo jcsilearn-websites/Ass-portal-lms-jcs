@@ -7,7 +7,7 @@ import { users } from './identity.schema';
 // TABLE. The matching DDL now also lives in drizzle/reference/schema.sql
 // (SECTION 13), added there for consistency once approved.
 
-// One value per trigger point named in the notifications module brief —
+// Onne value per trigger point named in the notifications module brief —
 // deliberately narrow (4 values) rather than a generic 'info'/'alert'
 // shape, so the type itself documents exactly what can produce a row.
 export const notificationTypeEnum = pgEnum('notification_type_enum', [
