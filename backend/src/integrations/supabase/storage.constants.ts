@@ -34,7 +34,9 @@ export interface StorageBucketConfig {
   // below, which is deliberately unrestricted since it's short-lived staging.
   allowedMimeTypes: readonly string[];
 }
-
+// 2MB — the enforced limit for user-facing "image" uploads (avatars,
+// question/option images). Single source of truth, reused in three places:
+// STORAGE_BUCKET_CONFIG below (so storage.ts's validateUpload() and
 // 2MB — the enforced limit for user-facing "image" uploads (avatars,
 // question/option images). Single source of truth, reused in three places:
 // STORAGE_BUCKET_CONFIG below (so storage.ts's validateUpload() and
