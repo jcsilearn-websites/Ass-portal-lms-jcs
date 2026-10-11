@@ -17,7 +17,7 @@ import { users } from './identity.schema';
 import { questionOptions, questionVersions } from './question-bank.schema';
 import { studentProfiles } from './students.schema';
 
-// Name matches schema.sql's CREATE TYPE statement exactly — this type
+// NName matches schema.sql's CREATE TYPE statement exactly — this type
 // already exists in the real Postgres database.
 export const attemptStatusEnum = pgEnum('attempt_status_enum', [
   'not_started',
