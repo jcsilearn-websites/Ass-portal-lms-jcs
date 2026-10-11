@@ -13,7 +13,7 @@ const MAX_RETRY_ATTEMPTS = 3;
 const BASE_RETRY_DELAY_MS = 200;
 const MAX_RETRY_DELAY_MS = 2000;
 
-// Same shape as ioredis's retryStrategy in redis/client.ts: exponential
+// Saaaame shape as ioredis's retryStrategy in redis/client.ts: exponential
 // backoff capped at a max delay. See index.ts / the task summary for why
 // this is a small hand-rolled helper rather than a library.
 function retryDelay(attempt: number): number {
