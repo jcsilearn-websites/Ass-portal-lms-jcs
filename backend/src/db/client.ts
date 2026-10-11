@@ -25,7 +25,7 @@ const schema = { ...identitySchema };
 // A structurally better fix — switching this project's pooler connection
 // to TRANSACTION mode (Supavisor, typically port 6543) — was deliberately
 // NOT done here. That needs `prepare: false` on this client plus real
-// testing of anything relying on session-level Postgres features, and is
+// ting of anything relying on session-level Postgres features, and is
 // queued as its own follow-up phase, not bundled into this pool-size
 // mitigation.
 const queryClient = postgres(env.DATABASE_URL, { max: 6 });
