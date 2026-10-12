@@ -1,11 +1,13 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
+import { URL } from 'node:url';
 import { env } from '../config/env';
 import * as identitySchema from './schema/identity.schema';
 
 const schema = { ...identitySchema };
-
+const dbUrl = new URL(env.DATABASE_URL);
+const socketHost = dbUrl.searchParams.get('host');
 // max: 6, not postgres.js's higher common defaults — sized against a real
 // constraint, not guessed. This Supabase project's pooler runs in SESSION
 // mode with a hard, project-wide cap of 15 total connections (confirmed
@@ -28,7 +30,15 @@ const schema = { ...identitySchema };
 // ting of anything relying on session-level Postgres features, and is
 // queued as its own follow-up phase, not bundled into this pool-size
 // mitigation.
-const queryClient = postgres(env.DATABASE_URL, { max: 6 });
+const queryClient = socketHost?.startsWith('/')
+  ? postgres({
+      host: socketHost,
+      database: dbUrl.pathname.slice(1),
+      username: decodeURIComponent(dbUrl.username),
+      password: decodeURIComponent(dbUrl.password),
+      max: 6,
+    })
+  : postgres(env.DATABASE_URL, { max: 6 });
 
 const realDb = drizzle(queryClient, { schema });
 
