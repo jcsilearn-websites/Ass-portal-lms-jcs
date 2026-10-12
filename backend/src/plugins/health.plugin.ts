@@ -15,7 +15,13 @@ async function checkDatabase(): Promise<ReadinessCheck> {
     await db.execute(sql`select 1`);
     return { name: 'database', healthy: true };
   } catch (err: any) {
-    console.error('DB readiness error:', err?.message, err?.cause?.message ?? err?.cause, err?.code);
+    console.error('DB readiness error:', JSON.stringify({
+  message: err?.message,
+  causeMessage: err?.cause?.message,
+  causeCode: err?.cause?.code,
+  causeErrno: err?.cause?.errno,
+  causeAddress: err?.cause?.address,
+}));
     return { name: 'database', healthy: false };
   }
 }
