@@ -34,7 +34,7 @@ export default fp(async function healthPlugin(fastify: FastifyInstance) {
   // Livenesss: is the process up and able to handle a request at all? No
   // dependency checks — a slow/dead DB or Redis shouldn't make an
   // orchestrator think this process itself needs restarting.
-  fastify.get('/healthz', async () => {
+  fastify.get('/health', async () => {
     return { status: 'ok' };
   });
 
