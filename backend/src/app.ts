@@ -32,7 +32,7 @@ const API_PREFIX = '/api/v1';
 const MULTIPART_MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024;
 
 export async function buildApp(): Promise<FastifyInstance> {
-  const app = Fastify();
+  const app = Fastify({ trustProxy: true });
 
   // Registration order:
   //

@@ -8,4 +8,4 @@ export const JWT_TOKEN_TYPE = {
 
 export type JwtTokenType = (typeof JWT_TOKEN_TYPE)[keyof typeof JWT_TOKEN_TYPE];
 
-export const REFRESH_TOKEN_COOKIE_NAME = 'refreshToken';
+export const REFRESH_TOKEN_COOKIE_NAME = '__session';

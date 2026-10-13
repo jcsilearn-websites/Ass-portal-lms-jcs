@@ -10,7 +10,7 @@ import type { CheckResult } from './mediaPermissions'
 // Derived from env.apiBaseUrl's origin (new URL(path, base) resolves a
 // leading-slash path against the origin, discarding /api/v1) so this keeps
 // working if that path prefix ever changes.
-const HEALTHZ_URL = new URL('/healthz', env.apiBaseUrl).toString()
+const HEALTHZ_URL = new URL('/health', env.apiBaseUrl).toString()
 const TIMEOUT_MS = 5000
 
 export async function checkNetworkStability(): Promise<CheckResult> {
