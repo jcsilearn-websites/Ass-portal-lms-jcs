@@ -1,11 +1,31 @@
 {
   "hosting": {
+    "site": "project-ec6f4838-44f5-416c-b80",
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
-      { "source": "/api/**", "run": { "serviceId": "jcsilearn-backend", "region": "asia-south1" } },
-      { "source": "/health", "run": { "serviceId": "jcsilearn-backend", "region": "asia-south1" } },
-      { "source": "**", "destination": "/index.html" }
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "jcsilearn-backend",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "/health",
+        "run": {
+          "serviceId": "jcsilearn-backend",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
