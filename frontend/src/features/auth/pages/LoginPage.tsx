@@ -323,7 +323,7 @@ export default function LoginPage() {
               <span className={styles.arrow}>→</span>
             </button>
 
-            <div className={styles.dividerNote}>Access is restricted to unregistered institutions</div>
+            <div className={styles.dividerNote}>Access is restricted to unregistered institutions.</div>
           </form>
 
           <div className={styles.foot}>
